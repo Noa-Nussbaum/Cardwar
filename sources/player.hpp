@@ -1,9 +1,6 @@
-#ifndef PLAYER_HP
-#define PLAYER_H
+#pragma once
 #include <stdio.h>
 #include <iostream>
-#include <fstream>
-#include <sstream>
 #include <stdexcept>
 #include <string>
 
@@ -12,15 +9,15 @@ using namespace std;
 namespace ariel{
 
 class Player{
+    private:
+        string name;
+
     public:
         Player(string name);
-        void stacksize();
-        void cardesTaken();
-    private:
-        int stacksize;
-        int cardesTaken;
-        string name;
+        Player(){}
+        
+        int stacksize();
+        int cardesTaken();
+        std::string getString();
     };
 }
-
-#endif

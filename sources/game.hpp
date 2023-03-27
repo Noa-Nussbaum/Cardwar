@@ -1,5 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -21,13 +20,11 @@ class Game{
         void printLog();
         void printStats();
     private:
-        Player player1;
-        Player player2;
-        string lastTurn;
+        // Player player1;
+        // Player player2;
+        // string lastTurn;
         string Log; //All turns concatenated
 
     };
 
 }
-
-#endif 
