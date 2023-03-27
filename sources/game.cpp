@@ -10,21 +10,21 @@
 using namespace std;
 namespace ariel{
 
-class Game{
-    public:
-        Game(Player player1, Player player2);
-        void playTurn();
-        void printLastTurn(); 
-        void playAll();
-        void printWiner();
-        void printLog();
-        void printStats();
-    private:
+
+    
+        Game::Game(Player player1, Player player2){};
+        void Game::playTurn(){};
+        void Game::printLastTurn(){}; 
+        void Game::playAll(){};
+        void Game::printWiner(){};
+        void Game::printLog(){};
+        void Game::printStats(){};
+    
         Player player1;
         Player player2;
         string lastTurn;
         string Log; //All turns concatenated
 
-    };
+    
 
 }
