@@ -11,6 +11,7 @@ struct ReporterCounter: public ConsoleReporter {
             : ConsoleReporter(input_options) {}
 
     void test_run_end(const TestRunStats& run_stats) override {
+        std::cout << run_stats.numAsserts << std::endl;
         if (run_stats.numAsserts >= MIN_TESTS) {
             return_code = 0;
         } else {
@@ -21,6 +22,7 @@ struct ReporterCounter: public ConsoleReporter {
 };
 
 REGISTER_REPORTER("counter", 1, ReporterCounter);
+
 
 int main(int argc, char** argv) {
     Context context;

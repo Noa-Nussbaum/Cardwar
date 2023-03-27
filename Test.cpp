@@ -34,6 +34,19 @@ TEST_CASE("Game initialization"){
     
 }
 
+TEST_CASE("Game has started"){
+    Player player1("Noa");
+    Player player2("Hodaya");
+    Game Game(player1,player2);
+    Game.playTurn();
+    CHECK(player1.stacksize()==25);
+    CHECK(player2.stacksize()==25);
+    
+}
+
+TEST_CASE("Entire game"){
+    
+}
 
 
 
