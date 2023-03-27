@@ -6,7 +6,6 @@
 using namespace std;
 namespace ariel{
 Player:: Player(string name){
-    name = name;
 }
 
 int Player::stacksize(){

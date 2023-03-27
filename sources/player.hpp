@@ -14,8 +14,6 @@ class Player{
 
     public:
         Player(string name);
-        Player(){}
-        
         int stacksize();
         int cardesTaken();
         std::string getString();
