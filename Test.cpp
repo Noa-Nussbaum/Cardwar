@@ -100,23 +100,84 @@ TEST_CASE("Check winners"){
 
     // Restore the original standard output stream
     std::cout.rdbuf(old_cout_buf);
+    std::string output = ss.str();
 
     if(one>two){
         // Check that the output is correct
-        std::string output = ss.str();
         CHECK(output == "Noa\n");
     }
     else{
         // Check that the output is correct
-    std::string output = ss.str();
-    CHECK(output == "Hodaya\n");
+        CHECK(output == "Hodaya\n");
     }
 }
 
-TEST_CASE(""){
+TEST_CASE("Print last turn"){
+
+    Player player1("Noa");
+    Player player2("Hodaya");
+
+    Game Game(player1,player2);
+
+    // Save the current standard output stream to a variable
+    std::stringstream ss;
+    std::streambuf* old_cout_buf = std::cout.rdbuf();
+    std::cout.rdbuf(ss.rdbuf());
+
+    // Call the function that prints to standard output
+    Game.printLastTurn();
+
+    // Restore the original standard output stream
+    std::cout.rdbuf(old_cout_buf);
+    std::string output = ss.str();
+
+    CHECK(output == "\n");
+
+}
+TEST_CASE("Print log"){
+
+    Player player1("Noa");
+    Player player2("Hodaya");
+
+    Game Game(player1,player2);
+
+    // Save the current standard output stream to a variable
+    std::stringstream ss;
+    std::streambuf* old_cout_buf = std::cout.rdbuf();
+    std::cout.rdbuf(ss.rdbuf());
+
+    // Call the function that prints to standard output
+    Game.printLog();
+
+    // Restore the original standard output stream
+    std::cout.rdbuf(old_cout_buf);
+    std::string output = ss.str();
+
+    CHECK(output == "\n");
 
 }
 
+TEST_CASE("Print stats"){
 
+    Player player1("Noa");
+    Player player2("Hodaya");
+
+    Game Game(player1,player2);
+
+    // Save the current standard output stream to a variable
+    std::stringstream ss;
+    std::streambuf* old_cout_buf = std::cout.rdbuf();
+    std::cout.rdbuf(ss.rdbuf());
+
+    // Call the function that prints to standard output
+    Game.printStats();
+
+    // Restore the original standard output stream
+    std::cout.rdbuf(old_cout_buf);
+    std::string output = ss.str();
+
+    CHECK(output == "\n");
+
+}
 
 }
