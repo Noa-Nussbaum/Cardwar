@@ -81,6 +81,8 @@ TEST_CASE("Check winners"){
 
     Game Game(player1,player2);
 
+    CHECK_THROWS(Game.printWiner());
+
     Game.playAll();
 
     // check throws for play turn after play all
