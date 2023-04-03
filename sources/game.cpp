@@ -10,7 +10,9 @@
 using namespace std;
 namespace ariel{
 
-        Game::Game(Player player1, Player player2) : player1(player1), player2(player2) {
+        Game::Game(Player p1, Player p2) : player1(p1), player2(p2) {
+                // player1.cardsLeft=26;
+                // player2.cardsLeft=26;
         }
 
         void Game::playTurn(){};

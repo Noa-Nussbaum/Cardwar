@@ -4,17 +4,26 @@
 #include <string>
 
 using namespace std;
+
 namespace ariel{
-Player:: Player(string name){
+
+    string name;
+    int cardsLeft;
+    int cardsWon;
+
+    Player::Player(string name)
+    : name(name), cardsLeft(26), cardsWon(0) {
+        this->name=name;
 }
 
-int Player::stacksize(){
-    return 0;
 
-}
-int Player::cardesTaken(){
-    return 0;
+    int Player::stacksize(){
+        return cardsLeft;
+    }
 
-}
+    int Player::cardesTaken(){
+        return cardsWon;
+    }
+
 }
 
