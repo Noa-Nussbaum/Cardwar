@@ -131,7 +131,7 @@ namespace ariel{
 
         void Game::printWiner(){
                 if(player1.stacksize()==26){
-                        throw std::runtime_error("Error: Game hasn't begum");
+                        throw std::runtime_error("Error: Game hasn't begun");
                         exit(0);
                 }
                 string winner = "";
@@ -163,6 +163,7 @@ namespace ariel{
                         cout << log[i] << endl;
                 }
         };
+
         void Game::printStats(){
                 cout << player1.name + " won " + std::to_string(player1.cardesTaken()) + " cards" << endl;
                 cout << player2.name + " won " + std::to_string(player2.cardesTaken()) + " cards" << endl;
@@ -186,6 +187,4 @@ namespace ariel{
                 cout << "Number of draws: " + std::to_string(drawNum) << endl;
 
         };
-
-
 }
