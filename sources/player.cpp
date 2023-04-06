@@ -2,23 +2,24 @@
 #include <stdio.h>
 #include <stdexcept>
 #include <string>
+#include <vector>
+#include "card.hpp"
 
 using namespace std;
 
 namespace ariel{
 
     string name;
-    int cardsLeft;
     int cardsWon;
-
-    Player::Player(string name)
-    : name(name), cardsLeft(26), cardsWon(0) {
-        this->name=name;
-}
+    std::vector<card> deck;
+    
+    Player::Player(string name) : name(name), cardsWon(0), deck() {
+        std::vector<card> deck;
+    }
 
 
     int Player::stacksize(){
-        return cardsLeft;
+        return this->deck.size();
     }
 
     int Player::cardesTaken(){

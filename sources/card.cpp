@@ -1,4 +1,3 @@
-#include "game.hpp"
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -11,7 +10,13 @@
 using namespace std;
 namespace ariel{
         
-        card::card(int number,char suit):number(number),suit(suit){}
+        card::card(const card& copy){
+                this->number=copy.number;
+                this->suit=copy.suit;
+        }
+        
+        card::card(int number, char suit):number(number),suit(suit){}
+
         int card::getNumber() 
         { return number;}
         char card::getSuit() 

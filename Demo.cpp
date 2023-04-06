@@ -25,8 +25,8 @@ int main() {
 
    cout << p1.stacksize() << endl; //prints the amount of cards left. should be 21 but can be less if a draw was played
    cout << p2.stacksize() << endl; //prints the amount of cards left. should be 21 but can be less if a draw was played
-
-
+   
+  
 
   //  Game game(p1,p2); 
   //  for (int i=0;i<5;i++) {

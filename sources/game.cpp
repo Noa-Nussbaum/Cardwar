@@ -15,11 +15,8 @@ using namespace std;
 namespace ariel{
 
         Game::Game(Player &p1, Player &p2) : player1(p1), player2(p2) {
-               // create a deck of cards
-                std::vector<card> deck;
-                player1.cardsLeft=26;
-                player2.cardsLeft=26;
-                
+                // initialize the deck
+                deck = std::vector<card>();
                 for (int number = 1; number <= 13; ++number) {
                         deck.emplace_back(number, 'H');
                         deck.emplace_back(number, 'D');
@@ -30,11 +27,17 @@ namespace ariel{
                 // shuffle the deck
                 std::random_device rd;
                 std::mt19937 g(rd());
-                std::shuffle(deck.begin(), deck.end(), g);  
-                this->deck=deck;   
-                cout << "deck size:" << deck.size() << endl;   
+                std::shuffle(deck.begin(), deck.end(), g);
 
+                // assign each player their cards
+                for (std::vector<card>::size_type i = 0; i < 26; i++) {
+                        player1.deck.push_back(deck.back());
+                        deck.pop_back();
+                        player2.deck.push_back(deck.back());
+                        deck.pop_back();
+                }                
         }
+        
 
         void Game::playTurn(){};
         void Game::printLastTurn(){}; 

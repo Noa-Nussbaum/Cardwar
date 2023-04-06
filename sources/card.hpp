@@ -1,5 +1,4 @@
 #pragma once
-#include "game.hpp"
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -21,6 +20,7 @@ class card{
     
     public:
         card(int number, char suit);
+        card(const card& other);
         int getNumber();
         char getSuit();
     };
