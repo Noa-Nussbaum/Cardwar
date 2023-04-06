@@ -19,6 +19,7 @@ class Game{
         Player& player2;
         std::vector<card> deck;
         Game(Player &player1, Player &player2);
+
         void playTurn();
 
         string lastTurn;
@@ -32,6 +33,7 @@ class Game{
         void printLog();
 
         int drawNum;
+        int currDrawNum;
         void printStats();
 
     };

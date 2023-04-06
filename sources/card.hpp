@@ -22,6 +22,6 @@ class card{
         card(int number, char suit);
         card(const card& other);
         int getNumber();
-        char getSuit();
+        string getSuit();
     };
 }

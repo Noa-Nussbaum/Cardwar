@@ -19,9 +19,19 @@ namespace ariel{
 
         int card::getNumber() 
         { return number;}
-        char card::getSuit() 
-         {return suit;}
-        // int card::number;
-        // char card::suit;
+        string card::getSuit() {
+                if(this->suit == 'H'){
+                        return "Hearts";
+                }
+                if(this->suit == 'S'){
+                        return "Spades";
+                }
+                if(this->suit == 'D'){
+                        return "Diamonds";
+                }
+                return "Clubs";
+
+        }
+
 
 }

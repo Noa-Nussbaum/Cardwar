@@ -33,6 +33,8 @@ int main() {
     game.playTurn();
     game.printLastTurn();
    }
+
+   game.printStats();
   //  game.printLastTurn(); // print the last turn stats. For example:
   //                                                   // Alice played Queen of Hearts Bob played 5 of Spades. Alice wins.
   //                                                   // Alice played 6 of Hearts Bob played 6 of Spades. Draw. Alice played 10 of Clubs Bob played 10 of Diamonds. draw. Alice played Jack of Clubs Bob played King of Diamonds. Bob wins.

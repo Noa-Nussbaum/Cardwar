@@ -45,18 +45,17 @@ namespace ariel{
                 // each player plays, we remove the cards, store them
                 // we compare their results 
                 if (player1.stacksize() == 0){
-
                         throw std::runtime_error("Error: Game over");
                         exit(0);
                 }
 
                 // Play the turns
                 int p1num = player1.deck.back().getNumber();
-                char p1suit = player1.deck.back().getSuit();
+                string p1suit = player1.deck.back().getSuit();
                 player1.deck.pop_back();
 
                 int p2num = player2.deck.back().getNumber();
-                char p2suit = player2.deck.back().getSuit();
+                string p2suit = player2.deck.back().getSuit();
                 player2.deck.pop_back();
 
                 string winner = "";
@@ -152,7 +151,25 @@ namespace ariel{
                         cout << log[i] << endl;
                 }
         };
-        void Game::printStats(){};
+        void Game::printStats(){
+                cout << player1.name + " won " + std::to_string(player1.cardesTaken()) + " cards" << endl;
+                cout << player2.name + " won " + std::to_string(player2.cardesTaken()) + " cards" << endl;
+                string currWinner = "";
+                if(player1.cardesTaken()>player2.cardesTaken()){
+                        currWinner = player1.name;
+                }
+                if(player1.cardesTaken()<player2.cardesTaken()){
+                        currWinner = player2.name;
+                }
+                else{
+                        currWinner = "Neither";
+                }
+                cout << currWinner + " is winning" << endl;
+                cout << "Number of draws: " + std::to_string(drawNum) << endl;
+
+
+
+        };
 
 
 }
