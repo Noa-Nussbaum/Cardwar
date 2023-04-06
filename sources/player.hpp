@@ -11,15 +11,14 @@ using namespace std;
 namespace ariel{
 
 class Player{
-    private:
+    public:
         
         string name;
         int cardsWon;
-    
-    public:
         Player(string name);
         int stacksize();
         int cardesTaken();
+        void addCards();
         std::string getString();
         std::vector<card> deck;
     };

@@ -20,11 +20,20 @@ class Game{
         std::vector<card> deck;
         Game(Player &player1, Player &player2);
         void playTurn();
+
+        string lastTurn;
         void printLastTurn(); 
+
         void playAll();
+        string finalWinner;
         void printWiner();
+
+        std::vector<string> log;
         void printLog();
+
+        int drawNum;
         void printStats();
+
     };
 
 }
