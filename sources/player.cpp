@@ -27,7 +27,7 @@ namespace ariel{
     }
 
     void Player::addCards(){
-        this->cardsWon=cardsWon+1;
+        this->cardsWon=cardsWon+2;
     }
 
 }

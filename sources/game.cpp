@@ -36,8 +36,7 @@ namespace ariel{
                         player2.deck.push_back(deck.back());
                         deck.pop_back();
                 }
-                drawNum = 0;
-                finalWinner = "";                
+                drawNum = 0;   
         }
         
 
@@ -108,10 +107,6 @@ namespace ariel{
                 lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
 
                 log.push_back(lastTurn);
-
-                if(player1.stacksize()==0){
-                        finalWinner = winner;
-                }
                 
 
         };
@@ -135,11 +130,28 @@ namespace ariel{
         };
 
         void Game::printWiner(){
-                if(player1.stacksize()!=0){
-                        throw std::runtime_error("Error: Game not over yet");
+                if(player1.stacksize()==26){
+                        throw std::runtime_error("Error: Game hasn't begum");
                         exit(0);
                 }
-                cout << this-> finalWinner << endl;
+                string winner = "";
+
+                if(player1.cardesTaken()>player2.cardesTaken()){
+                        winner = player1.name;
+                }
+                if(player1.cardesTaken()<player2.cardesTaken()){
+                        winner = player2.name;
+                }
+                else{
+                        winner = "Neither";
+                }
+
+                if(player1.stacksize()>0){
+                        cout << winner + " is winning" << endl;
+                }
+                else{
+                        cout << winner + " won" << endl;
+                }
         };
 
         void Game::printLog(){
@@ -155,19 +167,23 @@ namespace ariel{
                 cout << player1.name + " won " + std::to_string(player1.cardesTaken()) + " cards" << endl;
                 cout << player2.name + " won " + std::to_string(player2.cardesTaken()) + " cards" << endl;
                 string currWinner = "";
+
                 if(player1.cardesTaken()>player2.cardesTaken()){
                         currWinner = player1.name;
                 }
                 if(player1.cardesTaken()<player2.cardesTaken()){
                         currWinner = player2.name;
                 }
-                else{
+                else if (player1.cardesTaken()==player2.cardesTaken()){
                         currWinner = "Neither";
                 }
-                cout << currWinner + " is winning" << endl;
+                if(player1.stacksize()>0){
+                        cout << currWinner + " is winning" << endl;
+                }
+                else{
+                        cout << currWinner + " won" << endl;
+                }
                 cout << "Number of draws: " + std::to_string(drawNum) << endl;
-
-
 
         };
 

@@ -26,7 +26,7 @@ class Game{
         void printLastTurn(); 
 
         void playAll();
-        string finalWinner;
+        
         void printWiner();
 
         std::vector<string> log;
