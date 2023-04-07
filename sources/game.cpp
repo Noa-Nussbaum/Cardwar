@@ -70,7 +70,7 @@ namespace ariel{
                         lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
                         log.push_back(lastTurn);
 
-                        if(player1.stacksize()==0){
+                        if(player1.stacksize()==0 || player1.stacksize()==1){
                                 cout << "tie" << endl;
                                 player1.addCards(0.5*drawNum);
                                 player2.addCards(0.5*drawNum);
@@ -81,6 +81,7 @@ namespace ariel{
                                 player2.deck.pop_back();
                                 playTurn();
                         }
+                        // exit(0);
                         
                 }
                 
@@ -110,7 +111,7 @@ namespace ariel{
                         winner = player1.name;
                         player1.addCards(drawNum);
                 }
-                else{
+                else if(p1num<p2num){
                         winner = player2.name;
                         player2.addCards(drawNum);
                 }
@@ -119,7 +120,6 @@ namespace ariel{
 
                 log.push_back(lastTurn);
 
-                
                 drawNum=0;
                 
         };
