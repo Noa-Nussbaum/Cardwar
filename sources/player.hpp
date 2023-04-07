@@ -18,7 +18,7 @@ class Player{
         Player(string name);
         int stacksize();
         int cardesTaken();
-        void addCards();
+        void addCards(double num);
         std::string getString();
         std::vector<card> deck;
     };

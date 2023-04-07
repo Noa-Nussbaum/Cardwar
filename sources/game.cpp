@@ -60,6 +60,10 @@ namespace ariel{
                 string winner = "";
 
                 // tie/draw
+                //  one person wins and takes all
+                //  it's the last turn and there's a tie
+                //  there's a few draws and then the game ends
+
                 if (p1num == p2num){
                         drawNum++;
                         winner = "neither";
@@ -68,47 +72,56 @@ namespace ariel{
 
                         if(player1.stacksize()==0){
                                 cout << "tie" << endl;
+                                player1.addCards(0.5*drawNum);
+                                player2.addCards(0.5*drawNum);
                                 exit(0);
                         }
-                        // playTurn();
+                        else{
+                                player1.deck.pop_back();
+                                player2.deck.pop_back();
+                                playTurn();
+                        }
+                        
                 }
-
+                
 
                 // ace wins all but 2
                 if(p1num == 1){
                         if (p2num == 2){
                                 winner = player2.name;
-                                player2.addCards();
+                                player2.addCards(drawNum);
                         }
                         else{
                                 winner = player1.name;
-                                player1.addCards();
+                                player1.addCards(drawNum);
                         }
                 }
                 if(p2num == 1){
                         if (p1num == 2){
                                 winner = player1.name;
-                                player1.addCards();
+                                player1.addCards(drawNum);
                         }
                         else{
                                 winner = player2.name;
-                                player2.addCards();
+                                player2.addCards(drawNum);
                         }
                 }
                 else if(p1num>p2num){
                         winner = player1.name;
-                        player1.addCards();
+                        player1.addCards(drawNum);
                 }
                 else{
                         winner = player2.name;
-                        player2.addCards();
+                        player2.addCards(drawNum);
                 }
 
                 lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
 
                 log.push_back(lastTurn);
-                
 
+                
+                drawNum=0;
+                
         };
 
         void Game::printLastTurn(){

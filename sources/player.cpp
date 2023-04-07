@@ -26,8 +26,8 @@ namespace ariel{
         return cardsWon;
     }
 
-    void Player::addCards(){
-        this->cardsWon=cardsWon+2;
+    void Player::addCards(double num){
+        this->cardsWon=cardsWon+2+4*num;
     }
 
 }
