@@ -37,11 +37,12 @@ namespace ariel{
                         deck.pop_back();
                 }
                 drawNum = 0; 
-                currDrawNum = 0;  
+                currDrawNum = 0;
         }
         
 
         void Game::playTurn(){
+                
                 // each player plays, we remove the cards, store them
                 // we compare their results 
                 if (player1.stacksize() == 0){
@@ -61,10 +62,6 @@ namespace ariel{
                 string winner = "";
 
                 // tie/draw
-                //  one person wins and takes all
-                //  it's the last turn and there's a tie
-                //  there's a few draws and then the game ends
-
                 if (p1num == p2num){
                         drawNum++;
                         currDrawNum++;
@@ -72,15 +69,14 @@ namespace ariel{
                         lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
                         log.push_back(lastTurn);
 
-                        if(player1.stacksize()==0){
-                                cout << "tie" << endl;
-                                player1.addCards(0.5*currDrawNum);
-                                player2.addCards(0.5*currDrawNum);
-                                exit(0);
+                        if(player1.stacksize()==1){
+                                player1.addCards(0);
+                                player2.addCards(0);
                         }
-                        // if(player1.stacksize()==1){
-
-                        // }
+                        if(player1.stacksize()==0){
+                                player1.addCards(-0.25);
+                                player2.addCards(-0.25);
+                        }
                         else{
                                 player1.deck.pop_back();
                                 player2.deck.pop_back();
@@ -90,7 +86,7 @@ namespace ariel{
                         
                 }
                 
-
+                // else{
                 // ace wins all but 2
                 if(p1num == 1){
                         if (p2num == 2){
@@ -112,10 +108,10 @@ namespace ariel{
                                 player2.addCards(currDrawNum);
                         }
                 }
-                else{
+                else if (p1num!=1 && p2num!=1){
                         if(p1num>p2num){
-                        winner = player1.name;
-                        player1.addCards(currDrawNum);
+                                winner = player1.name;
+                                player1.addCards(currDrawNum);
                         }
                 
                         if(p1num<p2num){
@@ -129,7 +125,7 @@ namespace ariel{
                 log.push_back(lastTurn);
 
                 currDrawNum=0;
-                
+                // }
         };
 
         void Game::printLastTurn(){
@@ -145,7 +141,7 @@ namespace ariel{
                         throw std::runtime_error("Error: Game over");
                         exit(0);
                 }
-                while(player1.stacksize()!=0){
+                while(player1.stacksize()>0){
                         playTurn();
                 }
         };
