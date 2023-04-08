@@ -36,7 +36,8 @@ namespace ariel{
                         player2.deck.push_back(deck.back());
                         deck.pop_back();
                 }
-                drawNum = 0;   
+                drawNum = 0; 
+                currDrawNum = 0;  
         }
         
 
@@ -66,22 +67,26 @@ namespace ariel{
 
                 if (p1num == p2num){
                         drawNum++;
+                        currDrawNum++;
                         winner = "neither";
                         lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
                         log.push_back(lastTurn);
 
-                        if(player1.stacksize()==0 || player1.stacksize()==1){
+                        if(player1.stacksize()==0){
                                 cout << "tie" << endl;
-                                player1.addCards(0.5*drawNum);
-                                player2.addCards(0.5*drawNum);
+                                player1.addCards(0.5*currDrawNum);
+                                player2.addCards(0.5*currDrawNum);
                                 exit(0);
                         }
+                        // if(player1.stacksize()==1){
+
+                        // }
                         else{
                                 player1.deck.pop_back();
                                 player2.deck.pop_back();
                                 playTurn();
                         }
-                        // exit(0);
+                        
                         
                 }
                 
@@ -90,37 +95,40 @@ namespace ariel{
                 if(p1num == 1){
                         if (p2num == 2){
                                 winner = player2.name;
-                                player2.addCards(drawNum);
+                                player2.addCards(currDrawNum);
                         }
                         else{
                                 winner = player1.name;
-                                player1.addCards(drawNum);
+                                player1.addCards(currDrawNum);
                         }
                 }
                 if(p2num == 1){
                         if (p1num == 2){
                                 winner = player1.name;
-                                player1.addCards(drawNum);
+                                player1.addCards(currDrawNum);
                         }
                         else{
                                 winner = player2.name;
-                                player2.addCards(drawNum);
+                                player2.addCards(currDrawNum);
                         }
                 }
-                else if(p1num>p2num){
+                else{
+                        if(p1num>p2num){
                         winner = player1.name;
-                        player1.addCards(drawNum);
-                }
-                else if(p1num<p2num){
-                        winner = player2.name;
-                        player2.addCards(drawNum);
+                        player1.addCards(currDrawNum);
+                        }
+                
+                        if(p1num<p2num){
+                                winner = player2.name;
+                                player2.addCards(currDrawNum);
+                        }
                 }
 
                 lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
 
                 log.push_back(lastTurn);
 
-                drawNum=0;
+                currDrawNum=0;
                 
         };
 
