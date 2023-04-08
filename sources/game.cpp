@@ -67,7 +67,7 @@ namespace ariel{
                         currDrawNum++;
                         winner = "neither";
                         lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
-                        log.push_back(lastTurn);
+                        
 
                         if(player1.stacksize()==1){
                                 player1.addCards(0);
@@ -82,41 +82,45 @@ namespace ariel{
                                 player2.deck.pop_back();
                                 playTurn();
                         }
+                        log.push_back(lastTurn);
+                        
+
                         
                         
                 }
                 
-                // else{
                 // ace wins all but 2
-                if(p1num == 1){
-                        if (p2num == 2){
-                                winner = player2.name;
-                                player2.addCards(currDrawNum);
+                else if(p1num!=p2num){
+                        if(p1num == 1){
+                                if (p2num == 2){
+                                        winner = player2.name;
+                                        player2.addCards(currDrawNum);
+                                }
+                                else{
+                                        winner = player1.name;
+                                        player1.addCards(currDrawNum);
+                                }
                         }
-                        else{
-                                winner = player1.name;
-                                player1.addCards(currDrawNum);
+                        if(p2num == 1){
+                                if (p1num == 2){
+                                        winner = player1.name;
+                                        player1.addCards(currDrawNum);
+                                }
+                                else{
+                                        winner = player2.name;
+                                        player2.addCards(currDrawNum);
+                                }
                         }
-                }
-                if(p2num == 1){
-                        if (p1num == 2){
-                                winner = player1.name;
-                                player1.addCards(currDrawNum);
-                        }
-                        else{
-                                winner = player2.name;
-                                player2.addCards(currDrawNum);
-                        }
-                }
-                else if (p1num!=1 && p2num!=1){
-                        if(p1num>p2num){
-                                winner = player1.name;
-                                player1.addCards(currDrawNum);
-                        }
-                
-                        if(p1num<p2num){
-                                winner = player2.name;
-                                player2.addCards(currDrawNum);
+                        else if (p1num!=1 && p2num!=1){
+                                if(p1num>p2num){
+                                        winner = player1.name;
+                                        player1.addCards(currDrawNum);
+                                }
+                        
+                                if(p1num<p2num){
+                                        winner = player2.name;
+                                        player2.addCards(currDrawNum);
+                                }
                         }
                 }
 
@@ -125,7 +129,7 @@ namespace ariel{
                 log.push_back(lastTurn);
 
                 currDrawNum=0;
-                // }
+              
         };
 
         void Game::printLastTurn(){
@@ -177,7 +181,14 @@ namespace ariel{
                         exit(0);
                 }
                 for (vector<string>::size_type i=0; i<log.size();i++){
-                        cout << log[i] << endl;
+                        if(log.size()==1){
+                                cout << log[i] << endl;
+                        }
+                        else if (log.size()>1){
+                                if(log[i]!=log[i+1]){
+                                        cout << log[i] << endl;
+                                }
+                        }
                 }
         };
 
