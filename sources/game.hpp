@@ -36,6 +36,8 @@ class Game{
         int currDrawNum;
         void printStats();
 
+        int onePlayer;
+
 
     };
 

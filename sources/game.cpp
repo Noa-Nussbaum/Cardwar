@@ -15,6 +15,10 @@ using namespace std;
 namespace ariel{
 
         Game::Game(Player &p1, Player &p2) : player1(p1), player2(p2) {
+                if (player1.name == player2.name){
+                        onePlayer=1;
+                }
+                
                 // initialize the deck
                 deck = std::vector<card>();
                 for (int number = 1; number <= 13; ++number) {
@@ -42,6 +46,10 @@ namespace ariel{
         
 
         void Game::playTurn(){
+                if(onePlayer==1){
+                        throw std::runtime_error("Error: One player, find friends");
+                        exit(0);
+                }
                 
                 // each player plays, we remove the cards, store them
                 // we compare their results 
@@ -141,13 +149,14 @@ namespace ariel{
         }; 
 
         void Game::playAll(){
-                if(player1.stacksize()==0){
-                        throw std::runtime_error("Error: Game over");
-                        exit(0);
-                }
+                // if(player1.stacksize()==0){
+                //         throw std::runtime_error("Error: Game over");
+                //         exit(0);
+                // }
                 while(player1.stacksize()>0){
                         playTurn();
                 }
+                
         };
 
         void Game::printWiner(){
