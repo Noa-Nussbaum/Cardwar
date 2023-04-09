@@ -165,7 +165,7 @@ namespace ariel{
         };
 
         void Game::printWiner(){
-                // if the game isn't over throw error
+                // if the game hasn't begun throw error
                 if(player1.stacksize()==26){
                         throw std::runtime_error("Error: Game hasn't begun");
                         exit(0);
@@ -179,14 +179,14 @@ namespace ariel{
                 if(player1.cardesTaken()<player2.cardesTaken()){
                         winner = player2.name;
                 }
-                else{
+                else if (player1.cardesTaken()==player2.cardesTaken()){
                         winner = "Neither";
                 }
 
                 if(player1.stacksize()>0){
                         cout << winner + " is winning" << endl;
                 }
-                else{
+                else if(player1.stacksize()==0){
                         cout << winner + " won" << endl;
                 }
         };
@@ -236,7 +236,7 @@ namespace ariel{
                 if(player1.stacksize()>0){
                         cout << currWinner + " is winning" << endl;
                 }
-                else{
+                else if(player1.stacksize()==0){
                         cout << currWinner + " won" << endl;
                 }
                 cout << "Number of draws: " + std::to_string(drawNum) << endl;
