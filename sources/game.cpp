@@ -84,6 +84,8 @@ namespace ariel{
                         
                         // if turn before the last
                         if(player1.stacksize()==1){
+                                player1.deck.pop_back();
+                                player2.deck.pop_back();
                                 player1.addCards(0);
                                 player2.addCards(0);
                         }
@@ -92,7 +94,7 @@ namespace ariel{
                                 player1.addCards(-0.25);
                                 player2.addCards(-0.25);
                         }
-                        else{
+                        else if (player1.stacksize()!=0 && player1.stacksize()!=1){
                                 player1.deck.pop_back();
                                 player2.deck.pop_back();
                                 playTurn();
