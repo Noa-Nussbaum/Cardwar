@@ -14,7 +14,10 @@
 using namespace std;
 namespace ariel{
 
+        // contructor
         Game::Game(Player &p1, Player &p2) : player1(p1), player2(p2) {
+                
+                // make sure there are 2 different players
                 if (player1.name == player2.name){
                         onePlayer=1;
                 }
@@ -40,12 +43,15 @@ namespace ariel{
                         player2.deck.push_back(deck.back());
                         deck.pop_back();
                 }
+
+                // initialize variables
                 drawNum = 0; 
                 currDrawNum = 0;
         }
         
 
         void Game::playTurn(){
+                // make sure there are 2 different players
                 if(onePlayer==1){
                         throw std::runtime_error("Error: One player, find friends");
                         exit(0);
@@ -58,7 +64,7 @@ namespace ariel{
                         exit(0);
                 }
 
-                // Play the turns
+                // play the turns
                 int p1num = player1.deck.back().getNumber();
                 string p1suit = player1.deck.back().getSuit();
                 player1.deck.pop_back();
@@ -76,11 +82,12 @@ namespace ariel{
                         winner = "neither";
                         lastTurn = player1.name + " played " + std::to_string(p1num) + " of " + p1suit + " and " + player2.name + " played " + std::to_string(p2num) + " of " + p2suit + ". " + winner + " wins.";
                         
-
+                        // if turn before the last
                         if(player1.stacksize()==1){
                                 player1.addCards(0);
                                 player2.addCards(0);
                         }
+                        // if last turn
                         if(player1.stacksize()==0){
                                 player1.addCards(-0.25);
                                 player2.addCards(-0.25);
@@ -90,11 +97,9 @@ namespace ariel{
                                 player2.deck.pop_back();
                                 playTurn();
                         }
-                        log.push_back(lastTurn);
-                        
 
-                        
-                        
+                        log.push_back(lastTurn);
+
                 }
                 
                 // ace wins all but 2
@@ -119,6 +124,7 @@ namespace ariel{
                                         player2.addCards(currDrawNum);
                                 }
                         }
+                        // if not a tie and neither are aces
                         else if (p1num!=1 && p2num!=1){
                                 if(p1num>p2num){
                                         winner = player1.name;
@@ -141,18 +147,17 @@ namespace ariel{
         };
 
         void Game::printLastTurn(){
+                // if the game is over throw error
                 if(player1.stacksize()==26){
                         throw std::runtime_error("Error: Game hasn't begun");
                         exit(0);
                 }
+
                 cout << lastTurn << endl;
         }; 
 
         void Game::playAll(){
-                // if(player1.stacksize()==0){
-                //         throw std::runtime_error("Error: Game over");
-                //         exit(0);
-                // }
+
                 while(player1.stacksize()>0){
                         playTurn();
                 }
@@ -160,10 +165,12 @@ namespace ariel{
         };
 
         void Game::printWiner(){
+                // if the game isn't over throw error
                 if(player1.stacksize()==26){
                         throw std::runtime_error("Error: Game hasn't begun");
                         exit(0);
                 }
+
                 string winner = "";
 
                 if(player1.cardesTaken()>player2.cardesTaken()){
@@ -185,10 +192,12 @@ namespace ariel{
         };
 
         void Game::printLog(){
+                // if the game hasn't begun throw error
                 if(player1.stacksize()==26){
                         throw std::runtime_error("Error: Game hasn't begun");
                         exit(0);
                 }
+
                 for (vector<string>::size_type i=0; i<log.size();i++){
                         if(log.size()==1){
                                 cout << log[i] << endl;
@@ -199,11 +208,20 @@ namespace ariel{
                                 }
                         }
                 }
+
         };
 
         void Game::printStats(){
+
+                // if the game hasn't begun throw error
+                if(player1.stacksize()==26){
+                        throw std::runtime_error("Error: Game hasn't begun");
+                        exit(0);
+                }
+
                 cout << player1.name + " won " + std::to_string(player1.cardesTaken()) + " cards" << endl;
                 cout << player2.name + " won " + std::to_string(player2.cardesTaken()) + " cards" << endl;
+                
                 string currWinner = "";
 
                 if(player1.cardesTaken()>player2.cardesTaken()){

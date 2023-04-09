@@ -9,15 +9,20 @@
 using namespace std;
 namespace ariel{
         
+        // copy constructor
         card::card(const card& copy){
                 this->number=copy.number;
                 this->suit=copy.suit;
         }
         
+        // constructor
         card::card(int number, char suit):number(number),suit(suit){}
 
+        // returns number
         int card::getNumber() 
         { return number;}
+
+        // returns suit
         string card::getSuit() {
                 if(this->suit == 'H'){
                         return "Hearts";
@@ -31,13 +36,13 @@ namespace ariel{
                 return "Clubs";
 
         }
-        // copy assignment operator
+    // copy assignment operator
     card& card::operator=(const card& other){
-        if(this != &other){
-            this->number = other.number;
-            this->suit = other.suit;
-        }
-        return *this;
+    if(this != &other){
+        this->number = other.number;
+        this->suit = other.suit;
+    }
+    return *this;
     }
 
     // move constructor
@@ -60,8 +65,8 @@ namespace ariel{
     }
 
 
-        // Destructor
-        card::~card() {}
+    // destructor
+    card::~card() {}
 
 
 }

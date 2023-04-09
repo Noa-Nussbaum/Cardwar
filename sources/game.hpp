@@ -14,10 +14,13 @@ using namespace std;
 namespace ariel{
 
 class Game{
+
      public:
         Player& player1;
         Player& player2;
+
         std::vector<card> deck;
+
         Game(Player &player1, Player &player2);
 
         void playTurn();
@@ -32,10 +35,15 @@ class Game{
         std::vector<string> log;
         void printLog();
 
+        // keep track of draws for final stats
         int drawNum;
+
+        // keep track of current draws to add cards accordingly
         int currDrawNum;
+
         void printStats();
 
+        // flag if there's only one player
         int onePlayer;
 
 
