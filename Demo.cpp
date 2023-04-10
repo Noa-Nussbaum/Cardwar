@@ -47,4 +47,6 @@ int main() {
   //  cout << p1.cardesTaken() << endl;
    game.printStats();// for each player prints basic statistics: win rate, cards won, <other stats you want to print>. Also print the draw rate and amount of draws that happand. (draw within a draw counts as 2 draws. )
   //  game.printWiner(); // prints the name of the winning player
+    cout << p1.stacksize() <<p1.cardesTaken()<<p2.stacksize() << p2.cardesTaken()<<endl;
+    
 }

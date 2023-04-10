@@ -35,7 +35,6 @@ TEST_CASE("The card scheme at the end of the game")
     Player p2("Bob");
     Game game(p1, p2);
     game.playAll();
-    cout << p1.stacksize() <<p1.cardesTaken()<<p2.stacksize() << p2.cardesTaken()<<endl;
     int sum = p1.stacksize() + p1.cardesTaken() + p2.stacksize() + p2.cardesTaken();
     CHECK(sum == 52);
 }
